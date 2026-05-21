@@ -24,6 +24,9 @@ dotenv.config({ path: "../.env" }); // Adjust path if .env is in backend root
 
 const app = express();
 
+// Trust reverse proxy (e.g. Render) to get the correct client IP for rate limiting
+app.set("trust proxy", 1);
+
 // CORS
 app.use(
   cors({
